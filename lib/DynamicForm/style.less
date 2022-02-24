@@ -1,0 +1,37 @@
+@import '~antd/lib/style/themes/default.less';
+
+.dynamic {
+  table {
+    width: 100%;
+    thead {
+      > tr {
+        > th {
+          color: @table-header-color;
+          font-weight: 500;
+          text-align: left;
+          background: @table-header-bg;
+          border-bottom: @border-width-base @border-style-base
+            @table-border-color;
+        }
+      }
+    }
+    tbody {
+      > tr > td {
+        padding-bottom: 0 !important;
+        :global {
+          .anticon {
+            font-size: 20px;
+            cursor: pointer;
+          }
+          .anticon-up-circle,
+          .anticon-down-circle {
+            color: @primary-color;
+          }
+        }
+        &:last-child {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
