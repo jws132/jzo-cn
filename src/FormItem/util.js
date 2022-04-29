@@ -8,13 +8,12 @@ import {
   TreeSelect,
   TimePicker,
 } from 'antd';
-import { NumRange, InputNum } from '@jzo/a-cn'
+import { NumRange, InputNum } from '@jzo/a-cn';
 import locale from 'antd/lib/date-picker/locale/zh_CN';
 import moment from 'moment';
 // import OssUpload from './OssUpload';
 
 import RoleTree from './RoleTree';
-
 
 moment.locale('zh-cn');
 

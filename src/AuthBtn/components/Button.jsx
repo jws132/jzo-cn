@@ -14,7 +14,7 @@ export default ({
   const [newLoading, setLoading] = useState(false);
   const newProps = {
     type,
-    loading: loading ? loading : newLoading, 
+    loading: loading ? loading : newLoading,
     ...props,
     ...restProps,
   };

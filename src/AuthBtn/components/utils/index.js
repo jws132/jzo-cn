@@ -11,6 +11,6 @@ export const newConfirm = ({ confirmText, loading, onOk, ...confirmProps }) => {
     cancelText: '取消',
     confirmLoading: loading,
     onOk,
-    ...confirmProps
+    ...confirmProps,
   });
 };
