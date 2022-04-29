@@ -20,4 +20,5 @@ export default defineConfig({
     ],
   ],
   locale: false,
+  mfsu: {},
 });

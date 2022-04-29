@@ -19,3 +19,7 @@ npm i jz-cn --save
 2021-05-11
 
 - feat: 新增 DynamicForm 组件模块
+
+2022-03-08
+
+- bug: 新增 AuthBtn 组件模块对 Button 支持

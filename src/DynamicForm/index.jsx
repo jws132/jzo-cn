@@ -5,12 +5,12 @@ import {
   DownCircleOutlined,
 } from '@ant-design/icons';
 import { Form, Button, message, Space } from 'antd';
-import GFormItem from '../GFormItem';
+import FormItem from '../FormItem';
 import styles from './style.less';
 
 const DynamicForm = ({
   listFormSet = [],
-  hideThead,
+  hideHead,
   name,
   maxLength = 0,
   hasLabel,
@@ -24,7 +24,7 @@ const DynamicForm = ({
         return (
           <div className={`${styles.dynamic} ant-table`}>
             <table>
-              {!hideThead ? (
+              {!hideHead ? (
                 <thead className="ant-table-thead">
                   <tr>
                     {listFormSet.map((item, index) => (
@@ -47,10 +47,9 @@ const DynamicForm = ({
                         fieldKey: [field.fieldKey, newName],
                         label: hasLabel ? label : '',
                       };
-                      console.log('item', item);
                       return (
                         <td key={`${field.fieldKey}_${newName}`}>
-                          <GFormItem itemSet={item} />
+                          <FormItem itemSet={item} />
                         </td>
                       );
                     })}
@@ -110,7 +109,7 @@ const DynamicForm = ({
 
 DynamicForm.defaultProps = {
   listFormSet: [],
-  hideThead: false,
+  hideHead: false,
   footerRender: null,
   hasLabel: false,
   hasRemove: true,

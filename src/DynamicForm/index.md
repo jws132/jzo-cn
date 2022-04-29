@@ -17,6 +17,8 @@ import { DynamicForm, JForm } from '@jzo/a-cn';
 
 export default ({}) => {
   const fromProps = {
+    layout: 'vertical',
+    column: 1,
     onFinish: values => {
       console.log('values', values);
     },
@@ -34,17 +36,11 @@ export default ({}) => {
                 type: 'input',
                 name: 'name',
                 label: '姓名',
-                props: {
-                  placeholder: '请输入文本',
-                },
               },
               {
                 type: 'input',
                 name: 'phone',
                 label: '手机号',
-                props: {
-                  placeholder: '请输入文本',
-                },
               },
             ]}
           />
@@ -66,6 +62,8 @@ import { DynamicForm, JForm } from '@jzo/a-cn';
 
 export default ({}) => {
   const fromProps = {
+    layout: 'vertical',
+    column: 1,
     onFinish: values => {
       console.log('values', values);
     },
@@ -76,7 +74,7 @@ export default ({}) => {
         name: 'colors',
         renderChild: (
           <DynamicForm
-            hideThead
+            hideHead
             name="colors"
             hasLabel={true}
             listFormSet={[
@@ -116,6 +114,8 @@ import { DynamicForm, JForm } from '@jzo/a-cn';
 
 export default ({}) => {
   const fromProps = {
+    layout: 'vertical',
+    column: 1,
     initialValues: {
       users: [{ name: '小张', phone: 13141415108 }],
     },
@@ -129,14 +129,13 @@ export default ({}) => {
         name: 'users',
         renderChild: (
           <DynamicForm
-            hideThead
+            hideHead
             name="users"
-            hasLabel={true}
             listFormSet={[
               {
                 type: 'input',
                 name: 'name',
-                label: '姓名',
+                label: '',
                 props: {
                   placeholder: '请输入文本',
                 },
@@ -144,7 +143,7 @@ export default ({}) => {
               {
                 type: 'input',
                 name: 'phone',
-                label: '手机号',
+                label: '',
                 props: {
                   placeholder: '请输入文本',
                 },
@@ -179,7 +178,7 @@ export default ({}) => {
 | maxLength    | 限制长度              | number              | 0     |
 | name         | 字段名称              | string              | []    |
 | hideLabel    | 是否显示 label        | bool                | false |
-| hideHead     | 是否显示头部          | bool                | false |
+| hideHead     | 是否显示头部          | bool                | true  |
 | hasRemove    | 是否显示删除按钮      | bool                | true  |
 | footerRender | 自定义底部新增操作    | ({add,length} )=>{} | -     |
 

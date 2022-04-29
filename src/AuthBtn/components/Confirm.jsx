@@ -1,15 +1,28 @@
-import { Button } from 'antd';
+import Button from './Button';
 import { newConfirm } from './utils/index';
 
-export default ({ children, confirmText, loading, onOk, ...restProps }) => {
+export default ({
+  type = 'link',
+  children,
+  confirmText,
+  loading,
+  onOk,
+  props,
+  confirmProps,
+  ...restProps
+}) => {
+  const newProps = {
+    type,
+    loading,
+    ...props,
+    ...restProps,
+  };
   return (
     <Button
-      type="link"
-      onClick={() => {
-        newConfirm({ confirmText, loading, onOk });
+      onOk={() => {
+        newConfirm({ confirmText, loading, onOk, ...confirmProps });
       }}
-      loading={loading}
-      {...restProps}
+      {...newProps}
     >
       {children}
     </Button>

@@ -61,6 +61,7 @@ const GTable = forwardRef((props, ref) => {
     refresh: () => {
       queryList();
     },
+    vvg,
   }));
 
   const onTableChange = (page, filters, sorter) => {

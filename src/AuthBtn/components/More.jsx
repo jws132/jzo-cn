@@ -1,16 +1,19 @@
 import React, { useMemo } from 'react';
-import { Menu, Dropdown, Button } from 'antd';
-import { uniqueId, keyBy } from 'lodash';
+import { Menu, Dropdown } from 'antd';
+import Button from './Button';
+import { uniqueId, keyBy, omit } from 'lodash';
 import { DownOutlined } from '@ant-design/icons';
 import { newConfirm } from './utils/index';
 
 export default ({
+  type = 'link',
   children,
   confirmText,
   disabled,
   loading,
   menuChildren,
   onOk,
+  props,
   ...restProps
 }) => {
   const newChildren = useMemo(() => {
@@ -35,7 +38,8 @@ export default ({
       keyMenu?.[key]?.onOk?.();
     }
   }
-
+  const restDropdown = omit(restProps, 'placement');
+  console.log(restDropdown);
   return (
     <Dropdown
       type="link"
@@ -49,9 +53,9 @@ export default ({
           ))}
         </Menu>
       }
-      {...restProps}
+      {...restDropdown}
     >
-      <Button type="link">
+      <Button type="link" {...props}>
         {children}
         <DownOutlined />
       </Button>

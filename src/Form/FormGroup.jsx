@@ -1,131 +1,55 @@
 import React from 'react';
-import { uniqueId, isBoolean } from 'lodash';
-import { allMatch, needWrapCols } from './utils/index';
 import { Card, Row, Col } from 'antd';
-import GFormItem from '../GFormItem';
-import FormAction from './FormAction';
+import FormItem from '../FormItem';
 
 const FormGroup = props => {
-  const { gutter, formItemProps, itemLayout = {} } = props;
-
-  const getGroup = uniqueId('groupName_');
-
-  const groupRender = (ctx, props) => {
-    const { container, fields, children } = props;
-    const containerNode = container ? (
-      <Card {...container.props} />
-    ) : (
-      <React.Fragment />
-    );
+  //表单分组
+  const containerRender = ({ container, fields, formLyoutProps }) => {
     const fieldNode =
-      fields?.length > 0 ? containerRender(ctx, fields) : children;
-    return React.cloneElement(
-      containerNode,
-      {
-        ...containerNode.props,
-        style: Object.assign({}, containerNode.props.style, {
-          //display: container.visible === false ? 'none' : '',
-        }),
-      },
-      fieldNode,
+      fields?.length > 0 ? itemRender({ fields, formLyoutProps }) : null;
+
+    return container ? (
+      <Card {...container.props} title={container?.title}>
+        {fieldNode}
+      </Card>
+    ) : (
+      fieldNode
     );
   };
 
-  const containerRender = (ctx, fields) => {
-    const fieldsElems = [];
+  const itemRender = ({ fields, formLyoutProps }) => {
+    const { gutter, column, totalSpan } = formLyoutProps;
+    const fieldsList = [];
+    const formGroupList = [];
     fields.forEach((fieldConfig, index) => {
-      const fieldKey =
-        fieldConfig.dataIndex ||
-        fieldConfig.name ||
-        `${getGroup}-field-${index}`;
-      let fieldElem;
-      if (fieldConfig.container || fieldConfig.fields) {
-        fieldElem = <FormGroup {...fieldConfig} key={fieldKey} />;
+      const { container, fields, column: itemColumn } = fieldConfig;
+      if (container && fields) {
+        formGroupList.push(containerRender({ formLyoutProps, ...fieldConfig }));
       } else {
-        fieldElem = fieldRender(ctx, { ...fieldConfig, fieldKey });
+        const span = Math.min(
+          Number.isNaN(Number(itemColumn)) ? 1 : itemColumn,
+          column,
+        ); // 列占比数
+        const colSpan = Math.ceil(totalSpan / column) * span;
+        fieldsList.push(
+          <Col
+            span={colSpan}
+            key={fieldConfig.dataIndex || fieldConfig.name || Math.random()}
+          >
+            <FormItem fields={fieldConfig} {...formLyoutProps} />
+          </Col>,
+        );
       }
-
-      fieldsElems.push(fieldElem);
     });
-    return fieldsElems;
-  };
 
-  const fieldRender = (ctx, { dependency, fieldKey, ...restProps }) => {
-    const itemSet = {
-      ...restProps,
-    };
-
-    if (dependency) {
-      const deps = Object.keys(dependency);
-      for (let i = 0; i < deps.length; i++) {
-        const type = deps[i] || null;
-        if (isBoolean(dependency[type])) {
-          itemSet[type] = dependency[type];
-        } else {
-          const { relates = [], inputs = [], output, defaultOutput } =
-            dependency[type] || {};
-          const values = relates.map(relatedFieldNameList =>
-            ctx.getFieldValue(relatedFieldNameList),
-          );
-          const isAllMatched = allMatch(inputs, values);
-          if (type === 'visible') {
-            itemSet.visible = isAllMatched ? output : false;
-            break;
-          }
-          if (type === 'disabled') {
-            itemSet.disabled = isAllMatched ? output : defaultOutput;
-            break;
-          }
-        }
-      }
-    }
-    return (
-      <Col
-        span={itemLayout.span}
-        key={fieldKey}
-        style={{ display: itemSet.visible === false ? 'none' : '' }}
-      >
-        <GFormItem itemSet={itemSet} {...formItemProps} />
-      </Col>
+    return fieldsList.length > 0 ? (
+      <Row gutter={gutter}>{fieldsList}</Row>
+    ) : (
+      formGroupList
     );
   };
 
-  const renderChildren = props => {
-    const {
-      formInstance,
-      fields,
-      container,
-      actionsRender,
-      itemLayout,
-    } = props;
-    const children = fields ? groupRender(formInstance, props) : props.children;
-    let actionsElem;
-    if (actionsRender) {
-      actionsElem = (
-        <FormAction
-          key={`form-action`}
-          itemLayout={itemLayout}
-          formInstance={formInstance}
-          actionsRender={actionsRender}
-        />
-      );
-    }
-
-    if (actionsElem) {
-      return (
-        <React.Fragment>
-          {children}
-          {actionsElem}
-        </React.Fragment>
-      );
-    } else {
-      return children;
-    }
-
-    //return container ? children : <Row gutter={gutter}>{children}</Row>;
-  };
-
-  return renderChildren(props);
+  return containerRender(props);
 };
 
 export default FormGroup;

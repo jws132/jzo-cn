@@ -19,9 +19,12 @@ const AuthBtn = ({
   onOk,
   disabled,
   confirmText,
+  tipText = '',
   loading,
   name,
   children,
+  placement = 'top',
+  props,
   ...restProps
 }) => {
   if (hide) return null;
@@ -30,10 +33,13 @@ const AuthBtn = ({
     onOk,
     disabled,
     loading,
+    placement,
+    tipText,
+    props,
     ...restProps,
   };
 
-  if (['confirm', 'popconfirm', 'more'].includes(type)) {
+  if (['confirm', 'popconfirm', 'tooltip', 'more'].includes(type)) {
     const componentType = type.replace(type[0], type[0].toUpperCase());
     const Component = TYPE_TO_COMPONENT[componentType];
     if (['confirm', 'popconfirm'].includes(type)) {
@@ -58,6 +64,7 @@ AuthBtn.defaultProps = {
   disabled: false, //是否禁用
   confirmText: '', //提示信息
   loading: false,
+  placement: 'top',
 };
 
 export default AuthBtn;

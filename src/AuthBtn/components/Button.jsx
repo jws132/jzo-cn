@@ -1,22 +1,36 @@
 import { useState } from 'react';
-import { Button } from 'antd';
+import { Button, Tooltip } from 'antd';
 
 export default ({
   type = 'link',
   children,
   loading = false,
+  tipText = '',
+  placement = 'top',
   onOk,
+  props,
   ...restProps
 }) => {
   const [newLoading, setLoading] = useState(false);
+  const newProps = {
+    type,
+    loading: loading ? loading : newLoading, 
+    ...props,
+    ...restProps,
+  };
+
+  if (tipText) {
+    return (
+      <Tooltip title={tipText} placement={placement}>
+        <Button onClick={() => onOk({ setLoading })} {...newProps}>
+          {children}
+        </Button>
+      </Tooltip>
+    );
+  }
 
   return (
-    <Button
-      type={type === 'link' ? 'link' : type}
-      loading={loading ? loading : newLoading}
-      onClick={() => onOk({ setLoading })}
-      {...restProps}
-    >
+    <Button onClick={() => onOk({ setLoading })} {...newProps}>
       {children}
     </Button>
   );

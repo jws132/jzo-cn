@@ -2,7 +2,7 @@ import { Modal } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 const { confirm } = Modal;
 
-export const newConfirm = ({ confirmText, loading, onOk }) => {
+export const newConfirm = ({ confirmText, loading, onOk, ...confirmProps }) => {
   return confirm({
     title: '温馨提示',
     icon: <ExclamationCircleOutlined />,
@@ -11,5 +11,6 @@ export const newConfirm = ({ confirmText, loading, onOk }) => {
     cancelText: '取消',
     confirmLoading: loading,
     onOk,
+    ...confirmProps
   });
 };

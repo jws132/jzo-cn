@@ -292,6 +292,7 @@ const FileUpload = ({
           }
           return newData;
         });
+
       setFileList([...newFileList]);
 
       if (status === 'error') {
