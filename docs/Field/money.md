@@ -70,12 +70,12 @@ export default () => {
       <br />
       Form表单结合:
       <JForm
-        formSet={[
+        fields={[
           {
             label: '金额',
             type: 'custom',
             name: 'amount',
-            renderChild: <MoneyInput />,
+            renderFormItem: () => <MoneyInput />,
             props: {
               precision: 4, // 默认两位
             },
@@ -84,7 +84,7 @@ export default () => {
             label: '金额',
             type: 'custom',
             name: 'amount2',
-            renderChild: <MoneyInput />,
+            renderFormItem: () => <MoneyInput />,
             props: {
               prefix: '$',
               suffix: '元',
@@ -94,7 +94,7 @@ export default () => {
             label: '金额',
             type: 'custom',
             name: 'amount3',
-            renderChild: <MoneyInput />,
+            renderFormItem: () => <MoneyInput />,
             props: {
               addonBefore: '$',
               addonAfter: '元',

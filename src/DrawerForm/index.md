@@ -101,23 +101,23 @@ export default ({}) => {
 
 ### Api
 
-| 属性名           | 说明                                   | 类型            | 默认    |
-| ---------------- | -------------------------------------- | --------------- | ------- |
-| title            | 标题                                   | (match) => void |         |
-| visible          | 弹窗显示                               |                 |         |
-| initialValues    | 表单初始值                             |                 |         |
-| defaultActionBar | 底部是否显示按钮                       | (match) => void |         |
-| loading          | 请求的加载状态                         | (match) => void |         |
-| fields           | 表单的配置项，请参考 JForm 的 fields   |                 |         |
-| formProps        | form 内部的一些配置，参考 JForm 的属性 |                 |         |
-| onVisibleChange  | 返回 xs,sm,md,lg,xl,xxl                | (match) => void |         |
-| okButtonProps    | 保存按钮属性                           | object          |         |
-| cancelButtonProp | 关闭按钮属性                           | object          |         |
-| actionsPosition  | 菜单位置 center ,left                  | string          | default |
-| onOk             | 保存按钮的回调                         | func            |         |
-| onCancel         | 关闭按钮的回调                         | func            |         |
-| beforeRender     | 表单前的渲染 initialValues=>ReactNode  | fun             |         |
-| afterRender      | 表单后的渲染 initialValues=>ReactNode  | fun             |         |
-| actionsRender    | 底部按钮位置渲染 form=>                | fun             |         |
+| 属性名           | 说明                                   | 类型              | 默认    |
+| ---------------- | -------------------------------------- | ----------------- | ------- |
+| title            | 标题                                   | (match) => void   |         |
+| visible          | 弹窗显示                               |                   |         |
+| initialValues    | 表单初始值                             |                   |         |
+| defaultActionBar | 底部是否显示按钮                       | (match) => void   |         |
+| loading          | 请求的加载状态                         | (match) => void   |         |
+| fields           | 表单的配置项，请参考 JForm 的 fields   |                   |         |
+| formProps        | form 内部的一些配置，参考 JForm 的属性 |                   |         |
+| onVisibleChange  | 返回 visible 状态                      | (visible) => void |         |
+| okButtonProps    | 保存按钮属性                           | object            |         |
+| cancelButtonProp | 关闭按钮属性                           | object            |         |
+| actionsPosition  | 菜单位置 center ,left                  | string            | default |
+| onOk             | 保存按钮的回调                         | func              |         |
+| onCancel         | 关闭按钮的回调                         | func              |         |
+| beforeRender     | 表单前的渲染 funciton =>ReactNode      | fun               |         |
+| afterRender      | 表单后的渲染 funciton =>ReactNode      | fun               |         |
+| actionsRender    | 底部按钮位置渲染 form=>                | fun               |         |
 
 More skills for writing demo: https://d.umijs.org/guide/demo-principle

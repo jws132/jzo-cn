@@ -17,7 +17,7 @@ function GFormItem({ fields, itemSet, column, labelBasicSpan, layout }) {
     validOptions = {}, // 校验相关
     optionsData = [], // 下拉框数据
     models = [], // 下拉框数据对应的字段名['value','label']
-    renderChild,
+    renderFormItem,
     props = {}, // 组件原生的属性
     itemProps = {}, // FormItem的原生属性
     column: itemColumn,
@@ -74,12 +74,12 @@ function GFormItem({ fields, itemSet, column, labelBasicSpan, layout }) {
 
   let children = null;
 
-  if (componentType === 'custom' && renderChild) {
+  if (renderFormItem) {
     // 自定义组件
     children =
-      typeof renderChild === 'object'
-        ? React.cloneElement(renderChild, { ...props })
-        : renderChild;
+      typeof renderFormItem === 'object'
+        ? React.cloneElement(renderFormItem, { ...props })
+        : renderFormItem?.({ props, optionsData });
   } else {
     const { WrappedComponent, defaultProps = {}, childStyle, SubComponent } =
       mapTypeToComponent[componentType] || {};
