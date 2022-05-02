@@ -24,6 +24,59 @@ export default ({}) => {
     setModalVisit(false);
   };
 
+  const modalFormProps = {
+    title: '基本信息',
+    visible: modalVisit,
+    formProps: {
+      column: 1,
+      labelBasicSpan: 5,
+    },
+    fields: [
+      {
+        type: 'input',
+        label: '手机号',
+        name: 'mobile',
+        validOptions: {
+          rules: [
+            ...noEmpty,
+            { pattern: patternPhone, message: '请输入正确的手机号' },
+          ],
+        },
+      },
+      {
+        type: 'input',
+        label: '登录名称',
+        name: 'loginName',
+        validOptions: {
+          rules: noEmpty,
+        },
+      },
+      {
+        type: 'password',
+        label: '登录密码',
+        name: 'password',
+        validOptions: {
+          rules: [
+            ...noEmpty,
+            { message: '请输入密码(6-20位)', min: 6, max: 20 },
+          ],
+        },
+      },
+    ],
+    onVisibleChange: visible => {
+      console.log('visible', visible);
+    },
+    beforeRender: () => (
+      <Alert
+        message="表单前位置渲染"
+        type="warning"
+        style={{ marginBottom: 10 }}
+      />
+    ),
+    afterRender: () => <Alert message="表单后位置渲染" />,
+    onCancel,
+  };
+
   return (
     <>
       <Button
@@ -35,58 +88,7 @@ export default ({}) => {
         Modal 展示
       </Button>
 
-      <ModalForm
-        title="基本信息"
-        formProps={{
-          column: 1,
-          labelBasicSpan: 5,
-        }}
-        onVisibleChange={visible => {
-          console.log('visible', visible);
-        }}
-        onCancel={onCancel}
-        fields={[
-          {
-            type: 'input',
-            label: '手机号',
-            name: 'mobile',
-            validOptions: {
-              rules: [
-                ...noEmpty,
-                { pattern: patternPhone, message: '请输入正确的手机号' },
-              ],
-            },
-          },
-          {
-            type: 'input',
-            label: '登录名称',
-            name: 'loginName',
-            validOptions: {
-              rules: noEmpty,
-            },
-          },
-          {
-            type: 'password',
-            label: '登录密码',
-            name: 'password',
-            validOptions: {
-              rules: [
-                ...noEmpty,
-                { message: '请输入密码(6-20位)', min: 6, max: 20 },
-              ],
-            },
-          },
-        ]}
-        visible={modalVisit}
-        beforeRender={() => (
-          <Alert
-            message="表单前位置渲染"
-            type="warning"
-            style={{ marginBottom: 10 }}
-          />
-        )}
-        afterRender={() => <Alert message="表单后位置渲染" />}
-      />
+      <ModalForm {...modalFormProps} />
     </>
   );
 };
@@ -96,23 +98,24 @@ export default ({}) => {
 
 ### Api
 
-| 属性名           | 说明                                   | 类型            | 默认    |
-| ---------------- | -------------------------------------- | --------------- | ------- |
-| title            | 标题                                   | (match) => void |         |
-| visible          | 弹窗显示                               |                 |         |
-| initialValues    | 表单初始值                             |                 |         |
-| defaultActionBar | 底部是否显示按钮                       | true            |         |
-| loading          | 请求的加载状态                         | (match) => void |         |
-| fields           | 表单的配置项，请参考 JForm 的 fields   |                 |         |
-| formProps        | form 内部的一些配置，参考 JForm 的属性 |                 |         |
-| onVisibleChange  | 返回 visible 状态                      | (match) => void |         |
-| actionsPosition  | 菜单位置 center ,left                  | string          | default |
-| okButtonProps    | 保存按钮属性                           | object          |         |
-| cancelButtonProp | 关闭按钮属性                           | object          |         |
-| onOk             | 保存按钮的回调                         | func            |         |
-| onCancel         | 关闭按钮的回调                         | func            |         |
-| beforeRender     | 表单前的渲染 funciton =>ReactNode      | fun             |         |
-| afterRender      | 表单后的渲染 funciton =>ReactNode      | fun             |         |
-| actionsRender    | 底部按钮位置渲染 form=>                | fun             |         |
+| 属性名           | 说明                                   | 类型            | 默认    | 版本 |
+| ---------------- | -------------------------------------- | --------------- | ------- | ---- |
+| title            | 标题                                   | (match) => void |         |      |
+| visible          | 弹窗显示                               |                 |         |      |
+| initialValues    | 表单初始值                             |                 |         |      |
+| defaultActionBar | 底部是否显示按钮                       | true            |         |      |
+| loading          | 请求的加载状态                         | (match) => void |         |      |
+| fields           | 表单的配置项，请参考 JForm 的 fields   |                 |         |      |
+| formProps        | form 内部的一些配置，参考 JForm 的属性 |                 |         |      |
+| onVisibleChange  | 返回 visible 状态                      | (match) => void |         |      |
+| actionsPosition  | 菜单位置 center ,left                  | string          | default |      |
+| okButtonProps    | 保存按钮属性                           | object          |         |      |
+| cancelButtonProp | 关闭按钮属性                           | object          |         |      |
+| onOk             | 保存按钮的回调                         | func            |         |      |
+| onCancel         | 关闭按钮的回调                         | func            |         |      |
+| beforeRender     | 表单前的渲染 funciton =>ReactNode      | fun             |         |      |
+| afterRender      | 表单后的渲染 funciton =>ReactNode      | fun             |         |      |
+| actionsRender    | 底部按钮位置渲染 form=>                | fun             |         |      |
+| ...rest          | 参考 antd Modal 的属性                 | object          | -       |      |
 
 More skills for writing demo: https://d.umijs.org/guide/demo-principle

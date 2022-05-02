@@ -6,7 +6,7 @@ import { validEmoji, mapTypeToComponent } from './util';
 const FormItem = Form.Item;
 const { OptGroup } = Select;
 
-function GFormItem({ fields, itemSet, column, labelBasicSpan, layout }) {
+function JFormItem({ fields, itemSet, column, labelBasicSpan, layout }) {
   const {
     type = 'input', // 类型
     title, // 标签
@@ -75,11 +75,17 @@ function GFormItem({ fields, itemSet, column, labelBasicSpan, layout }) {
   let children = null;
 
   if (renderFormItem) {
+    const formProps = {
+      dataIndex,
+      name,
+      optionsData,
+      ...props,
+    };
     // 自定义组件
     children =
       typeof renderFormItem === 'object'
-        ? React.cloneElement(renderFormItem, { ...props })
-        : renderFormItem?.({ props, optionsData });
+        ? React.cloneElement(renderFormItem, { ...formProps })
+        : renderFormItem?.({ props: formProps });
   } else {
     const { WrappedComponent, defaultProps = {}, childStyle, SubComponent } =
       mapTypeToComponent[componentType] || {};
@@ -146,7 +152,7 @@ function GFormItem({ fields, itemSet, column, labelBasicSpan, layout }) {
     </FormItem>
   );
 }
-GFormItem.propTypes = {
+JFormItem.propTypes = {
   fields: PropTypes.object, // 表单字段配置项
   gutter: PropTypes.oneOfType([PropTypes.object, PropTypes.number]), // 输入项之间的间隔
   column: PropTypes.number, // 一行几列
@@ -154,7 +160,7 @@ GFormItem.propTypes = {
   layout: PropTypes.string, // label占比
 };
 
-GFormItem.defaultProps = {
+JFormItem.defaultProps = {
   fields: {},
   gutter: 0,
   column: 3,
@@ -162,4 +168,4 @@ GFormItem.defaultProps = {
   layout: 'horizontal',
 };
 
-export default GFormItem;
+export default JFormItem;

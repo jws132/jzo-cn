@@ -27,10 +27,11 @@ export default ({}) => {
         type: 'custom',
         label: '',
         name: 'colors',
-        renderChild: (
+        renderFormItem: (
           <DynamicForm
             name="colors"
             maxLength="2"
+            hasLabel={false}
             listFormSet={[
               {
                 type: 'input',
@@ -62,7 +63,6 @@ import { DynamicForm, JForm } from '@jzo/a-cn';
 
 export default ({}) => {
   const fromProps = {
-    layout: 'vertical',
     column: 1,
     onFinish: values => {
       console.log('values', values);
@@ -71,27 +71,38 @@ export default ({}) => {
       {
         type: 'custom',
         label: '',
-        name: 'colors',
-        renderChild: (
+        name: 'users',
+        renderFormItem: (
           <DynamicForm
-            hideHead
-            name="colors"
-            hasLabel={true}
+            hasHead={false}
+            name="users"
             listFormSet={[
               {
                 type: 'input',
-                name: 'name',
                 label: '姓名',
+                name: 'name',
                 props: {
-                  placeholder: '请输入文本',
+                  placeholder: '姓名',
                 },
               },
               {
-                type: 'input',
-                name: 'phone',
-                label: '手机号',
+                type: 'select',
+                name: 'sex',
+                title: '性别',
                 props: {
-                  placeholder: '请输入文本',
+                  placeholder: '性别',
+                },
+                optionsData: [
+                  { label: '男', value: '0' },
+                  { label: '女', value: '1' },
+                ],
+              },
+              {
+                type: 'datepicker',
+                name: 'date',
+                label: '入职日期',
+                props: {
+                  placeholder: '入职日期',
                 },
               },
             ]}
@@ -127,9 +138,9 @@ export default ({}) => {
         type: 'custom',
         label: '',
         name: 'users',
-        renderChild: (
+        renderFormItem: () => (
           <DynamicForm
-            hideHead
+            hasHead={false}
             name="users"
             listFormSet={[
               {
@@ -172,14 +183,15 @@ export default ({}) => {
 
 ### Api
 
-| 属性名       | 说明                  | 类型                | 默认  |
-| ------------ | --------------------- | ------------------- | ----- |
-| listFormSet  | 参照 Form 表单 fields | Array               | []    |
-| maxLength    | 限制长度              | number              | 0     |
-| name         | 字段名称              | string              | []    |
-| hideLabel    | 是否显示 label        | bool                | false |
-| hideHead     | 是否显示头部          | bool                | true  |
-| hasRemove    | 是否显示删除按钮      | bool                | true  |
-| footerRender | 自定义底部新增操作    | ({add,length} )=>{} | -     |
+| 属性名       | 说明                  | 类型                | 默认 |
+| ------------ | --------------------- | ------------------- | ---- |
+| name         | 字段名称              | string              | []   |
+| listFormSet  | 参照 Form 表单 fields | Array               | []   |
+| maxLength    | 限制长度              | number              | 0    |
+| hasLabel     | 是否显示 label        | bool                | true |
+| hasHead      | 是否显示头部          | bool                | true |
+| hasRemove    | 是否显示删除按钮      | bool                | true |
+| hasRemove    | 是否上下移动          | bool                | true |
+| footerRender | 自定义底部新增操作    | ({add,length} )=>{} | -    |
 
 More skills for writing demo: https://d.umijs.org/guide/demo-principle

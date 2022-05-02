@@ -9,7 +9,7 @@ group:
 ```jsx
 import React, { useState } from 'react';
 import { message, Switch } from 'antd';
-import { FileUpload } from '@jzo/a-cn';
+import { Upload } from '@jzo/a-cn';
 
 export default () => {
   const [value, setValue] = useState(
@@ -28,7 +28,7 @@ export default () => {
         <Switch value={disabled} onChange={checked => setDisabled(checked)} />
       </div>
       <br />
-      <FileUpload
+      <Upload
         value={value}
         maxLength={5}
         showUploadList={{ showDownloadIcon: true }}
@@ -46,7 +46,7 @@ export default () => {
 ```jsx
 import React, { useState } from 'react';
 import { message, Switch } from 'antd';
-import { FileUpload } from '@jzo/a-cn';
+import { Upload } from '@jzo/a-cn';
 
 export default () => {
   const [value, setValue] = useState(
@@ -65,7 +65,7 @@ export default () => {
         <Switch value={disabled} onChange={checked => setDisabled(checked)} />
       </div>
       <br />
-      <FileUpload
+      <Upload
         acceptSuffix="jpeg,jpg,png"
         listType="picture-card"
         value={value}
@@ -84,7 +84,7 @@ export default () => {
 ```jsx
 import React, { useState } from 'react';
 import { message, Switch } from 'antd';
-import { FileUpload } from '@jzo/a-cn';
+import { Upload } from '@jzo/a-cn';
 
 export default () => {
   const [value, setValue] = useState(
@@ -103,7 +103,7 @@ export default () => {
         <Switch value={disabled} onChange={checked => setDisabled(checked)} />
       </div>
       <br />
-      <FileUpload
+      <Upload
         acceptSuffix="csv,xlsx"
         value={value}
         maxLength={5}
@@ -124,7 +124,7 @@ export default () => {
 ```jsx
 import React, { useState } from 'react';
 import { message, Switch } from 'antd';
-import { FileUpload } from '@jzo/a-cn';
+import { Upload } from '@jzo/a-cn';
 
 export default () => {
   const [value, setValue] = useState([
@@ -154,7 +154,7 @@ export default () => {
         <Switch value={disabled} onChange={checked => setDisabled(checked)} />
       </div>
       <br />
-      <FileUpload
+      <Upload
         isArrayType
         acceptSuffix="csv,xlsx"
         value={value}
@@ -189,7 +189,7 @@ export default () => {
 ```jsx
 import React, { useState } from 'react';
 import { message, Switch } from 'antd';
-import { FileUpload } from '@jzo/a-cn';
+import { Upload } from '@jzo/a-cn';
 
 export default () => {
   const [value, setValue] = useState('XXXX.csv');
@@ -206,7 +206,7 @@ export default () => {
         <Switch value={disabled} onChange={checked => setDisabled(checked)} />
       </div>
       <br />
-      <FileUpload
+      <Upload
         acceptSuffix=".csv,.xlsx"
         value={value}
         onChange={onChange}
@@ -221,7 +221,7 @@ export default () => {
 
 ## API
 
-FileUpload
+Upload
 
 | 参数           | 说明                                                               | 类型        | 默认值   | 版本 |
 | -------------- | ------------------------------------------------------------------ | ----------- | -------- | ---- |

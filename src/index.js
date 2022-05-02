@@ -4,11 +4,10 @@ import PopoverMenu from './PopoverMenu';
 import AuthBtn from './AuthBtn';
 import DynamicForm from './DynamicForm';
 import Money from './Money';
-import BForm from './BForm';
 import MediaQueries from './MediaQueries';
-import FileUpload from './Upload';
+import Upload from './Upload';
 import FormItem from './FormItem';
-import JForm from './Form';
+import JForm from './JForm';
 import NumRange from './NumRange';
 import InputNum from './InputNum';
 import ModalForm from './ModalForm';
@@ -20,13 +19,12 @@ export {
   PopoverMenu,
   AuthBtn,
   DynamicForm,
-  BForm,
   MediaQueries,
   Money,
   NumRange,
   FormItem,
   JForm,
-  FileUpload,
+  Upload,
   InputNum,
   ModalForm,
   DrawerForm,

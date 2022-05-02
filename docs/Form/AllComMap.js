@@ -1,6 +1,6 @@
 import React from 'react';
 import { Divider, Button } from 'antd';
-import { DynamicForm, FileUpload } from '@jzo/a-cn';
+import { DynamicForm, Upload } from '@jzo/a-cn';
 
 export const complexForm = [
   {
@@ -250,7 +250,7 @@ export const complexForm = [
   },
   {
     type: 'custom',
-    renderChild: <FileUpload />,
+    renderChild: <Upload />,
     props: {
       maxLength: 5,
       showUploadList: { showDownloadIcon: false },
@@ -259,7 +259,7 @@ export const complexForm = [
   },
   {
     type: 'custom',
-    renderChild: <FileUpload />,
+    renderChild: <Upload />,
     props: {
       maxLength: 5,
       showUploadList: { showDownloadIcon: false },
@@ -269,7 +269,7 @@ export const complexForm = [
   },
   {
     type: 'custom',
-    renderChild: <FileUpload />,
+    renderChild: <Upload />,
     props: {
       maxLength: 5,
       showUploadList: { showDownloadIcon: false },

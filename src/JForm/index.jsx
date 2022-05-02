@@ -188,8 +188,6 @@ const GForm = props => {
     ...restProps,
   };
 
-  console.log('actionsProps', actionsProps);
-
   return (
     <Form {...formProps} form={form}>
       {wrapperNode}

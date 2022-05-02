@@ -100,21 +100,21 @@ GForm
 
 fields
 
-| 参数         | 说明                                                 | 类型                            | 默认值            | 版本 |
-| ------------ | ---------------------------------------------------- | ------------------------------- | ----------------- | ---- |
-| type         | 组件类型，具体看下面说明                             | string                          | -                 |      |
-| label        | 标签                                                 | string                          | -                 |      |
-| title        | 标签,同 label,结合 pro-table 列表配置时使用          | string                          | -                 |      |
-| name         | 入参名                                               | string                          | -                 |      |
-| dataIndex    | 入参名，同 name,结合 pro-table 列表配置时使用        | string                          | -                 |      |
-| hideInForm   | 是否失效去除                                         | bool                            | false             |      |
-| validOptions | 校验相关，参考 antd Form.Item 校验相关的             | { validateFirst, rules:[], ...} | -                 |      |
-| treeData     | type 为 treeselect 时有效，树形数据                  | object                          | -                 |      |
-| optionsData  | 下拉框数据,如 Select,Radio 等输入项                  | array                           | -                 |      |
-| models       | 下拉框数据对应的字段名                               | ['valueField','labelField']     | ['value','label'] |      |
-| props        | type 类型对应组件原生的属性，参考 antd，会透传给组件 | object                          | -                 |      |
-| itemProps    | Form.Item 原生的属性，参考 antd，会透传给组件        | object                          | -                 |      |
-| renderChild  | type 为 custom 时有效，自定义组件                    | ReactNode                       | -                 |      |
+| 参数           | 说明                                                 | 类型                            | 默认值            | 版本 |
+| -------------- | ---------------------------------------------------- | ------------------------------- | ----------------- | ---- |
+| type           | 组件类型，具体看下面说明                             | string                          | -                 |      |
+| label          | 标签                                                 | string                          | -                 |      |
+| title          | 标签,同 label,结合 pro-table 列表配置时使用          | string                          | -                 |      |
+| name           | 入参名                                               | string                          | -                 |      |
+| dataIndex      | 入参名，同 name,结合 pro-table 列表配置时使用        | string                          | -                 |      |
+| hideInForm     | 是否失效去除                                         | bool                            | false             |      |
+| validOptions   | 校验相关，参考 antd Form.Item 校验相关的             | { validateFirst, rules:[], ...} | -                 |      |
+| treeData       | type 为 treeselect 时有效，树形数据                  | object                          | -                 |      |
+| optionsData    | 下拉框数据,如 Select,Radio 等输入项                  | array                           | -                 |      |
+| models         | 下拉框数据对应的字段名                               | ['valueField','labelField']     | ['value','label'] |      |
+| props          | type 类型对应组件原生的属性，参考 antd，会透传给组件 | object                          | -                 |      |
+| itemProps      | Form.Item 原生的属性，参考 antd，会透传给组件        | object                          | -                 |      |
+| renderFormItem | 自定义组件 (props)=>{}                               | ReactNode                       | -                 |      |
 
 layoutProps
 

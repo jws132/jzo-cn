@@ -1,6 +1,6 @@
 {
   "name": "@jzo/a-cn",
-  "version": "1.0.9",
+  "version": "1.1.1",
   "description": "基于antd4.0组件",
   "scripts": {
     "start": "dumi dev",
@@ -16,8 +16,8 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
-  "main": "lib/index.js",
-  "module": "dist/index.esm.js",
+  "main": "dist/index.js",
+  "module": "es/index.js",
   "typings": "dist/index.d.ts",
   "files": [
     "es",

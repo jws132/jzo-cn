@@ -10,7 +10,7 @@ import styles from './style.less';
 
 const DynamicForm = ({
   listFormSet = [],
-  hideHead,
+  hasHead,
   name,
   maxLength = 0,
   hasLabel,
@@ -18,13 +18,14 @@ const DynamicForm = ({
   hasMove,
   footerRender,
 }) => {
+  console.log(name, listFormSet);
   return (
     <Form.List name={name}>
       {(fields, { add, remove, move }, { errors }) => {
         return (
           <div className={`${styles.dynamic} ant-table`}>
             <table>
-              {!hideHead ? (
+              {hasHead ? (
                 <thead className="ant-table-thead">
                   <tr>
                     {listFormSet.map((item, index) => (
@@ -38,8 +39,8 @@ const DynamicForm = ({
                 {fields.map((field, index) => (
                   <tr key={field.key}>
                     {listFormSet.map((item, i) => {
-                      const { name, label, dataIndex } = item;
-                      const newName = name || dataIndex;
+                      const { name: oldName, label, dataIndex } = item;
+                      const newName = oldName || dataIndex;
                       item = {
                         ...item,
                         dataIndex: [field.name, newName],
@@ -49,7 +50,7 @@ const DynamicForm = ({
                       };
                       return (
                         <td key={`${field.fieldKey}_${newName}`}>
-                          <FormItem itemSet={item} />
+                          <FormItem fields={item} />
                         </td>
                       );
                     })}
@@ -109,9 +110,9 @@ const DynamicForm = ({
 
 DynamicForm.defaultProps = {
   listFormSet: [],
-  hideHead: false,
+  hasHead: true,
   footerRender: null,
-  hasLabel: false,
+  hasLabel: true,
   hasRemove: true,
   hasMove: true,
   size: 'middle',
