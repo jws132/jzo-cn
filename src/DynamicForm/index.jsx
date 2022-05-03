@@ -18,7 +18,6 @@ const DynamicForm = ({
   hasMove,
   footerRender,
 }) => {
-  console.log(name, listFormSet);
   return (
     <Form.List name={name}>
       {(fields, { add, remove, move }, { errors }) => {
@@ -29,7 +28,9 @@ const DynamicForm = ({
                 <thead className="ant-table-thead">
                   <tr>
                     {listFormSet.map((item, index) => (
-                      <th key={item.name || item.dataIndex}>{item.label}</th>
+                      <th key={item.name || item.dataIndex}>
+                        {item.label || item.title}
+                      </th>
                     ))}
                     <th>操作</th>
                   </tr>
@@ -39,14 +40,15 @@ const DynamicForm = ({
                 {fields.map((field, index) => (
                   <tr key={field.key}>
                     {listFormSet.map((item, i) => {
-                      const { name: oldName, label, dataIndex } = item;
+                      const { name: oldName, label, dataIndex, title } = item;
                       const newName = oldName || dataIndex;
+                      const newTitle = label || title;
                       item = {
                         ...item,
                         dataIndex: [field.name, newName],
                         name: [field.name, newName],
                         fieldKey: [field.fieldKey, newName],
-                        label: hasLabel ? label : '',
+                        label: hasLabel ? newTitle : '',
                       };
                       return (
                         <td key={`${field.fieldKey}_${newName}`}>

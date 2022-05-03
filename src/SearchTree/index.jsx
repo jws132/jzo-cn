@@ -41,6 +41,7 @@ SearchTree.defaultProps = {
     keyField: 'key', // key值字段，需string
   },
   search: true, // 是否支持搜索
+  placeholder: '请输入查询条件',
   renameKey: '', // 重命名的key
   onRename: () => {}, // 重命名回调
   onSelect: () => {}, // 点击事件

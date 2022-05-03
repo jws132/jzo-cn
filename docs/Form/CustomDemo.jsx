@@ -10,7 +10,7 @@ export default () => {
         type: 'custom',
         label: '年龄区间',
         name: 'ageRange',
-        renderChild: <NumRange precision={2} />,
+        renderFormItem: <NumRange precision={2} />,
         props: {
           onChange(v) {
             console.log(v);

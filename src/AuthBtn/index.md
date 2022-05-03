@@ -94,6 +94,7 @@ export default ({}) => {
 import React from 'react';
 import { message, Space } from 'antd';
 import { AuthBtn } from '@jzo/a-cn';
+import { DownloadOutlined } from '@ant-design/icons';
 
 export default ({}) => {
   return (

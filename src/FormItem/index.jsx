@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Select } from 'antd';
 import { validEmoji, mapTypeToComponent } from './util';
+import { useState } from 'react';
 
 const FormItem = Form.Item;
 const { OptGroup } = Select;
@@ -21,11 +22,35 @@ function JFormItem({ fields, itemSet, column, labelBasicSpan, layout }) {
     props = {}, // 组件原生的属性
     itemProps = {}, // FormItem的原生属性
     column: itemColumn,
+    request,
   } = fields || itemSet;
 
   if (hideInForm) {
     return null;
   }
+
+  // const options = useMemo(() => {
+  //   return optionsData;
+  // }, [optionsData]);
+
+  // useEffect(() => {
+  //   console.log(1111111111111);
+  //   setOptions(optionsData);
+  // }, [optionsData]);
+
+  // useEffect(() => {
+  //   if (request) {
+  //     getRequest();
+  //   }
+  // }, [request]);
+
+  // const getRequest = async () => {
+  //   const { code, data, success } = await request(params);
+  //   if (success) {
+  //     setOptions(data);
+  //   }
+  //   return { code, data };
+  // };
 
   // 组件类型
   const componentType = type.toLowerCase();
@@ -100,9 +125,14 @@ function JFormItem({ fields, itemSet, column, labelBasicSpan, layout }) {
     ].includes(componentType);
     const [vauleKey = 'value', labelKey = 'label', uniqueKey] = models;
 
+    const componentProps = {
+      ...defaultProps,
+      ...props,
+    };
+
     if (WrappedComponent) {
       children = (
-        <WrappedComponent {...defaultProps} {...props}>
+        <WrappedComponent {...componentProps}>
           {isOptionFields
             ? optionsData.map(v => {
                 if (componentType === 'selectgroup') {
@@ -158,6 +188,7 @@ JFormItem.propTypes = {
   column: PropTypes.number, // 一行几列
   labelBasicSpan: PropTypes.number, // label占比
   layout: PropTypes.string, // label占比
+  request: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 
 JFormItem.defaultProps = {

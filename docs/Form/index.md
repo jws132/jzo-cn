@@ -21,6 +21,9 @@ export default () => {
         type: 'input',
         label: '用户名',
         name: 'username',
+        props: {
+          placeholder: '请输入用户名',
+        },
       },
       {
         type: 'password',

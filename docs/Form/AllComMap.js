@@ -300,7 +300,7 @@ export const complexForm = [
         },
       ],
     },
-    renderChild: (
+    renderFormItem: (
       <DynamicForm
         name="lists"
         listFormSet={[

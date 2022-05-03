@@ -8,7 +8,8 @@ import {
   TreeSelect,
   TimePicker,
 } from 'antd';
-import { NumRange, InputNum } from '@jzo/a-cn';
+import NumRange from '../NumRange';
+import InputNum from '../InputNum';
 import locale from 'antd/lib/date-picker/locale/zh_CN';
 import moment from 'moment';
 // import OssUpload from './OssUpload';

@@ -41,7 +41,6 @@ const FormGroups = () => {
     },
 
     actionsRender: actionRef => {
-      console.log('actio------------n', actionRef);
       return (
         <>
           <Button

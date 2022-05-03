@@ -51,7 +51,7 @@ const FormGroups = () => {
       merchantSave(values);
     },
 
-    toolBarRender: () => (
+    actionsRender: () => (
       <>
         <Button
           type="link"
