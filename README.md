@@ -1,4 +1,4 @@
-# jz-cn
+# @jzo/a-cn
 
 ### 介绍
 
@@ -6,12 +6,13 @@
 
 ### 安装
 
-> jz-cn 基于 antd4.0 二次封装，项目须依赖 antd4.0 版本开发。
+> @jzo/a-cn
+> 基于 antd4.0 二次封装，项目须依赖 antd4.0 版本开发。
 
 #### 安装包
 
 ```
-npm i jz-cn --save
+npm i @jzo/a-cn --save
 ```
 
 ### 更新日志：
@@ -23,3 +24,7 @@ npm i jz-cn --save
 2022-03-08
 
 - bug: 新增 AuthBtn 组件模块对 Button 支持
+
+2022-03-12
+
+- feat: 新增 SearchTree 组件模块
