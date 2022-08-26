@@ -66,6 +66,9 @@ export default ({}) => {
     onVisibleChange: visible => {
       console.log('visible', visible);
     },
+    onOk: values => {
+      console.log('values', values);
+    },
     beforeRender: () => (
       <Alert
         message="表单前位置渲染"

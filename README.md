@@ -28,3 +28,7 @@ npm i @jzo/a-cn --save
 2022-03-12
 
 - feat: 新增 SearchTree 组件模块
+
+2022-05-2
+
+- bug: 修改 DrawerForm 以及 ModalForm 验证

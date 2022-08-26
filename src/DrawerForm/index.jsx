@@ -77,7 +77,7 @@ const DrawerForm = ({
             <Button
               type="primary"
               loading={loading}
-              onClick={() => actionRef.current.submit()}
+              onClick={() => actionRef.current.onValidate(onOk)}
               {...okButtonProps}
             >
               {okText}

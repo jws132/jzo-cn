@@ -60,7 +60,7 @@ const ModalForm = ({
     title,
     destroyOnClose: true,
     onOk: () => {
-      formRef.current.submit();
+      formRef.current.onValidate(onOk);
     },
     onCancel,
     footer: (
@@ -118,6 +118,12 @@ ModalForm.propTypes = {
       itemProps: PropTypes.object, // FormItem的原生属性
     }),
   ),
+  formProps: PropTypes.arrayOf(
+    PropTypes.shape({
+      column: PropTypes.number,
+      labelBasicSpan: PropTypes.number,
+    }),
+  ),
   /**
    * 是否显示
    */
@@ -165,6 +171,10 @@ ModalForm.propTypes = {
 
 ModalForm.defaultProps = {
   title: '',
+  formProps: {
+    column: 1,
+    labelBasicSpan: 5,
+  },
   loading: false,
   visible: false,
   initialValues: {},
